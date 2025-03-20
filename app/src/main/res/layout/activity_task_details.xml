@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskDetailsActivity">
+
+    <!-- Градиентная панель -->
+    <LinearLayout
+        android:id="@+id/gradient_panel"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="@drawable/gradient_panel"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Заголовок задачи -->
+    <TextView
+        android:id="@+id/task_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Заголовок"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/gradient_panel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp" />
+
+    <!-- Статус и дата задачи -->
+    <TextView
+        android:id="@+id/task_status"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Status: In Progress"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/task_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp" />
+
+    <TextView
+        android:id="@+id/task_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Date: 2025-03-20"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/task_status"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp" />
+
+    <!-- Блок описания задачи -->
+    <TextView
+        android:id="@+id/task_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/description_bg"
+        android:padding="12dp"
+        android:maxLines="5"
+        android:ellipsize="end"
+        android:text="Описание задачи будет здесь..."
+        android:textSize="16sp"
+        android:scrollHorizontally="false"
+        app:layout_constraintTop_toBottomOf="@id/task_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Кнопка Узнать детали -->
+    <Button
+        android:id="@+id/learn_more_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Узнать детали"
+        android:layout_marginTop="16dp"
+        android:onClick="openGoogleDetails"
+        app:layout_constraintTop_toBottomOf="@id/task_description"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

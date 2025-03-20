@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, TaskDetailsActivity::class.java).apply {
                 putExtra("title", task.title)
                 putExtra("status", task.status)
+                putExtra("description", task.description)
                 putExtra("date", task.date)
             }
             startActivity(intent)
