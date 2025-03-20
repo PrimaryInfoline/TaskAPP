@@ -6,11 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- Градиентная панель с ограничениями -->
+    <LinearLayout
+        android:id="@+id/gradient_panel"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="@drawable/gradient_panel"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- RecyclerView для списка задач с ограничениями -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:padding="16dp" />
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/gradient_panel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="16dp"
+        android:contentDescription="Список задач"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,24 +11,33 @@ import java.io.InputStreamReader
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var taskAdapter: TaskAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         val tasks = loadTasksFromJson()
+        taskAdapter = TaskAdapter(tasks) { task ->
+            val intent = Intent(this, TaskDetailsActivity::class.java).apply {
+                putExtra("title", task.title)
+                putExtra("status", task.status)
+                putExtra("date", task.date)
+            }
+            startActivity(intent)
+        }
 
-        val adapter = TaskAdapter(tasks)
-        recyclerView.adapter = adapter
+        recyclerView.adapter = taskAdapter
     }
 
     private fun loadTasksFromJson(): List<TaskItem> {
         val inputStream = assets.open("tasks.json")
         val reader = InputStreamReader(inputStream)
-        val gson = Gson()
         val taskListType = object : TypeToken<List<TaskItem>>() {}.type
-        return gson.fromJson(reader, taskListType)
+        return Gson().fromJson(reader, taskListType)
     }
 }
